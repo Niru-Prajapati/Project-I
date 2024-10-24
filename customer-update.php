@@ -5,14 +5,14 @@
 <link rel="stylesheet" type="text/css" href="nav2.css">
 <link rel="stylesheet" type="text/css" href="form4.css">
 <title>
-Purchases
+Customers
 </title>
 </head>
 
 <body>
 
-	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
+		<div class="sidenav">
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -51,14 +51,14 @@ Purchases
 			</div>
 			<a href="sales-view.php">View Sales Invoice Details</a>
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>			
+			<a href="pos1.php">Add New Sale</a>		
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions - Last Month</a>				
+				<a href="salesreport.php">Transactions Reports</a>				
 			</div>			
 	</div>
 
@@ -68,94 +68,88 @@ Purchases
 	
 	<center>
 	<div class="head">
-	<h2> ADD PURCHASE DETAILS</h2>
+	<h2> UPDATE CUSTOMER DETAILS</h2>
 	</div>
 	</center>
-	
-	
-	<br><br><br><br><br><br><br><br>
-	
-	
-	<div class="one row">
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-				
-	<?php
-	
-		include "config.php";
-		 
-		if(isset($_POST['add']))
-		{
-		$pid = mysqli_real_escape_string($conn, $_REQUEST['pid']);
-		$mid = mysqli_real_escape_string($conn, $_REQUEST['mid']);
-		$qty = mysqli_real_escape_string($conn, $_REQUEST['pqty']);
-		$cost = mysqli_real_escape_string($conn, $_REQUEST['pcost']);
-		$pdate = mysqli_real_escape_string($conn, $_REQUEST['pdate']);
-		$mdate = mysqli_real_escape_string($conn, $_REQUEST['mdate']);
-		$edate = mysqli_real_escape_string($conn, $_REQUEST['edate']);
 
-		$sql = "INSERT INTO purchase VALUES ($pid,  $mid,'$qty','$cost','$pdate','$mdate','$edate')";
-		if(mysqli_query($conn, $sql)){
-			echo "<p style='font-size:8;'>Purchase details successfully added!</p>";
-		} else{
-			echo "<p style='font-size:8;color:red;'>Error! Check details.</p>";
-		}
+
+	<div class="one">
+		<div class="row">
 		
+	<?php
+		
+		include "config.php";
+		
+		if(isset($_GET['id']))
+		{
+			$id=$_GET['id'];
+			$qry1="SELECT * FROM customer WHERE c_id='$id'";
+			$result = $conn->query($qry1);
+			$row = $result -> fetch_row();
 		}
-		 
-		$conn->close();
+
+		if( isset($_POST['update']))
+		 {
+			$id = $_POST['cid'];
+			$fname = $_POST['cfname'];
+			$lname = $_POST['clname'];
+			$age = $_POST['age'];
+			$sex = $_POST['sex'];
+			$phno = $_POST['phno'];
+			$mail = $_POST['emid'];
+			 
+		$sql="UPDATE customer SET c_fname='$fname',c_lname='$lname',c_age='$age',c_sex='$sex',c_phno='$phno',c_mail='$mail' where c_id='$id'";
+		if ($conn->query($sql))
+		header("location:customer-view.php");
+		else
+		echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+		}
+
 	?>
-	
-			<div class="column">
+			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+				<div class="column">
 					<p>
-						<label for="pid">Purchase ID:</label><br>
-						<input type="number" name="pid">
-					</p>
-					<!-- <p>
-						<label for="sid">Supplier ID:</label><br>
-						<input type="number" name="sid">
-					</p> -->
-					<p>
-						<label for="mid">Medicine ID:</label><br>
-						<input type="number" name="mid">
+						<label for="cid">Customer ID:</label><br>
+						<input type="number" name="cid" value="<?php echo $row[0]; ?>" readonly>
 					</p>
 					<p>
-						<label for="pqty">Purchase Quantity:</label><br>
-						<input type="number" name="pqty">
+						<label for="cfname">First Name:</label><br>
+						<input type="text" name="cfname" value="<?php echo $row[1]; ?>">
+					</p>
+					<p>
+						<label for="clname">Last Name:</label><br>
+						<input type="text" name="clname" value="<?php echo $row[2]; ?>">
+					</p>
+					<p>
+						<label for="age">Age:</label><br>
+						<input type="number" name="age" value="<?php echo $row[3]; ?>">
 					</p>
 					
+					<p>
+						<label for="sex">Sex: </label><br>
+						<input type="text" name="sex" value="<?php echo $row[4]; ?>">
+					</p>
 					
 				</div>
 				<div class="column">
 					
 					<p>
-						<label for="pcost">Purchase Cost:</label><br>
-						<input type="number" step="0.01" name="pcost">
-					</p>
-					
-					
-					<p>
-						<label for="pdate">Date of Purchase:</label><br>
-						<input type="date" name="pdate">
+						<label for="phno">Phone Number: </label><br>
+						<input type="number" name="phno" value="<?php echo $row[5]; ?>">
 					</p>
 					<p>
-						<label for="mdate">Manufacturing Date:</label><br>
-						<input type="date" name="mdate">
+						<label for="emid">Email ID:</label><br>
+						<input type="text" name="emid" value="<?php echo $row[6]; ?>">
 					</p>
-					<p>
-						<label for="edate">Expiry Date:</label><br>
-						<input type="date" name="edate">
-					</p>
-					
 				</div>
-				
 			
-			<input type="submit" name="add" value="Add Purchase">
+			<input type="submit" name="update" value="Update">
+			
 			</form>
-		<br>
-	
+		</div>
 	</div>
-		
-</body>
+	
+</body>	
 
 <script>
 	
@@ -175,5 +169,5 @@ Purchases
 			}
 			
 </script>
-
+	
 </html>

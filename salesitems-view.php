@@ -58,8 +58,7 @@ Products - Sale
 			</button>
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
-				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>				
+				<a href="expiryreport.php">Medicines - Soon to Expire</a>			
 			</div>			
 	</div>
 
@@ -86,7 +85,7 @@ Products - Sale
 	<?php
 	
 	include "config.php";
-	$sql = "SELECT sale_id, med_id,sale_qty,tot_price FROM sales_items";
+	$sql = "SELECT sale_id, med_id,sale_qty,tot_price FROM sales_item";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	
@@ -101,7 +100,7 @@ Products - Sale
 			echo "<tr>";
 				echo "<td>" . $row["sale_id"]. "</td>";
 				echo "<td>" . $row["med_id"] . "</td>";
-				echo "<td>" . $row1["med_name"]. "</td>";
+				 echo "<td>" . $row1["med_name"]. "</td>";
 				echo "<td>" . $row["sale_qty"]. "</td>";
 				echo "<td>" . $row["tot_price"]. "</td>";
 			echo "</tr>";

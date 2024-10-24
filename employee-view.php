@@ -78,7 +78,6 @@ Employee
 			<th>Employee ID</th>
 			<th>First Name</th>
 			<th>Last Name</th>
-			<th>Date of Birth</th>
 			<th>Age</th>
 			<th>Sex</th>
 			<th>Employee Type</th>
@@ -86,14 +85,13 @@ Employee
 			<th>Salary</th>
 			<th>Phone Number</th>
 			<th>Email Address</th>
-			<th>Home Address</th>
 			<th>Action</th>
 		</tr>
 		
 	<?php
 	
 	include "config.php";
-	$sql = "SELECT e_id, e_fname, e_lname, bdate, e_age, e_sex, e_type, e_jdate, e_sal, e_phno, e_mail, e_add FROM employee where e_id<>1";
+	$sql = "SELECT e_id, e_fname, e_lname, e_age, e_sex, e_type, e_jdate, e_sal, e_phno, e_mail, e_add FROM employee where e_id<>1";
 	$result = $conn->query($sql);
 	
 	if ($result->num_rows > 0) {
@@ -104,7 +102,6 @@ Employee
 		echo "<td>" . $row["e_id"]. "</td>";
 		echo "<td>" . $row["e_fname"] . "</td>";
 		echo "<td>" . $row["e_lname"] . "</td>";
-		echo "<td>" . $row["bdate"] . "</td>";
 		echo "<td>" . $row["e_age"]. "</td>";
 		echo "<td>" . $row["e_sex"]. "</td>";
 		echo "<td>" . $row["e_type"]. "</td>";

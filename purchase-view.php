@@ -77,7 +77,7 @@ Purchases
 	<table align="right" id="table1" style="margin-right:100px;">
 		<tr>
 			<th>Purchase ID</th>
-			<th>Supplier ID</th>
+			
 			<th>Medicine ID</th>
 			<th>Medicine Name</th>
 			<th>Quantity</th>
@@ -91,7 +91,7 @@ Purchases
 	<?php
 
 	include "config.php";
-	$sql = "SELECT p_id,sup_id,med_id,p_qty,p_cost,pur_date,mfg_date,exp_date FROM purchase";
+	$sql = "SELECT p_id,med_id,p_qty,p_cost,pur_date,mfg_date,exp_date FROM purchase";
 	$result = $conn->query($sql);
 	
 	if ($result->num_rows > 0) {
@@ -105,7 +105,7 @@ Purchases
 
 			echo "<tr>";
 				echo "<td>" . $row["p_id"]. "</td>";
-				echo "<td>" . $row["sup_id"]. "</td>";
+			
 				echo "<td>" . $row["med_id"]. "</td>";
 				echo "<td>" . $row1["med_name"] . "</td>";
 				echo "<td>" . $row["p_qty"]. "</td>";
@@ -114,8 +114,8 @@ Purchases
 				echo "<td>" . $row["mfg_date"] . "</td>";
 				echo "<td>" . $row["exp_date"]. "</td>";
 				echo "<td align=center>";		 
-				echo "<a class='button1 edit-btn' href=purchase-update.php?pid=".$row['p_id']."&sid=".$row['sup_id']."&mid=".$row['med_id'].">Edit</a>";
-				echo "<a class='button1 del-btn' href=purchase-delete.php?pid=".$row['p_id']."&sid=".$row['sup_id']."&mid=".$row['med_id'].">Delete</a>";
+				echo "<a class='button1 edit-btn' href=purchase-update.php?pid=".$row['p_id']."&mid=".$row['med_id'].">Edit</a>";
+				echo "<a class='button1 del-btn' href=purchase-delete.php?pid=".$row['p_id']."&mid=".$row['med_id'].">Delete</a>";
 				echo "</td>";
 			echo "</tr>";
 		}

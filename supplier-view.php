@@ -2,17 +2,18 @@
 <html>
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="table1.css">
 <link rel="stylesheet" type="text/css" href="nav2.css">
-<link rel="stylesheet" type="text/css" href="form4.css">
-<title>
-Purchases
-</title>
+<head>
+<title>Suppliers</title>
 </head>
 
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -34,7 +35,7 @@ Purchases
 			<div class="dropdown-container">
 				<a href="purchase-add.php">Add New Purchase</a>
 				<a href="purchase-view.php">Manage Purchases</a>
-			</div>		
+			</div>			
 			<button class="dropdown-btn">Employees
 			<i class="down"></i>
 			</button>
@@ -58,7 +59,7 @@ Purchases
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions - Last Month</a>				
+				<a href="salesreport.php">Transactions Reports</a>				
 			</div>			
 	</div>
 
@@ -68,93 +69,49 @@ Purchases
 	
 	<center>
 	<div class="head">
-	<h2> ADD PURCHASE DETAILS</h2>
+	<h2> SUPPLIERS LIST</h2>
 	</div>
 	</center>
 	
-	
-	<br><br><br><br><br><br><br><br>
-	
-	
-	<div class="one row">
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-				
+	<table align="right" id="table1" style="margin-right:100px;">
+		<tr>
+			<th>Supplier ID</th>
+			<th>Company Name</th>
+			<th>Address</th>
+			<th>Phone Number</th>
+			<th>Email Address</th>
+			<th>Action</th>
+		</tr>
+		
 	<?php
 	
-		include "config.php";
-		 
-		if(isset($_POST['add']))
-		{
-		$pid = mysqli_real_escape_string($conn, $_REQUEST['pid']);
-		$mid = mysqli_real_escape_string($conn, $_REQUEST['mid']);
-		$qty = mysqli_real_escape_string($conn, $_REQUEST['pqty']);
-		$cost = mysqli_real_escape_string($conn, $_REQUEST['pcost']);
-		$pdate = mysqli_real_escape_string($conn, $_REQUEST['pdate']);
-		$mdate = mysqli_real_escape_string($conn, $_REQUEST['mdate']);
-		$edate = mysqli_real_escape_string($conn, $_REQUEST['edate']);
+	include "config.php";
+	$sql = "SELECT sup_id,sup_name,sup_add,sup_phno,sup_mail FROM suppliers";
+	$result = $conn->query($sql);
+	
+	if ($result->num_rows > 0) {
+	
+	while($row = $result->fetch_assoc()) {
 
-		$sql = "INSERT INTO purchase VALUES ($pid,  $mid,'$qty','$cost','$pdate','$mdate','$edate')";
-		if(mysqli_query($conn, $sql)){
-			echo "<p style='font-size:8;'>Purchase details successfully added!</p>";
-		} else{
-			echo "<p style='font-size:8;color:red;'>Error! Check details.</p>";
-		}
-		
-		}
-		 
-		$conn->close();
+	echo "<tr>";
+		echo "<td>" . $row["sup_id"]. "</td>";
+		echo "<td>" . $row["sup_name"] . "</td>";
+		echo "<td>" . $row["sup_add"]. "</td>";
+		echo "<td>" . $row["sup_phno"]. "</td>";
+		echo "<td>" . $row["sup_mail"]. "</td>";
+		echo "<td align=center>";
+		echo "<a class='button1 edit-btn' href=supplier-update.php?id=".$row['sup_id'].">Edit</a>";
+		echo "<a class='button1 del-btn' href=supplier-delete.php?id=".$row['sup_id'].">Delete</a>";
+		echo "</td>";
+	echo "</tr>";
+	}
+	echo "</table>";
+	} 
+
+	$conn->close();
+	
 	?>
 	
-			<div class="column">
-					<p>
-						<label for="pid">Purchase ID:</label><br>
-						<input type="number" name="pid">
-					</p>
-					<!-- <p>
-						<label for="sid">Supplier ID:</label><br>
-						<input type="number" name="sid">
-					</p> -->
-					<p>
-						<label for="mid">Medicine ID:</label><br>
-						<input type="number" name="mid">
-					</p>
-					<p>
-						<label for="pqty">Purchase Quantity:</label><br>
-						<input type="number" name="pqty">
-					</p>
-					
-					
-				</div>
-				<div class="column">
-					
-					<p>
-						<label for="pcost">Purchase Cost:</label><br>
-						<input type="number" step="0.01" name="pcost">
-					</p>
-					
-					
-					<p>
-						<label for="pdate">Date of Purchase:</label><br>
-						<input type="date" name="pdate">
-					</p>
-					<p>
-						<label for="mdate">Manufacturing Date:</label><br>
-						<input type="date" name="mdate">
-					</p>
-					<p>
-						<label for="edate">Expiry Date:</label><br>
-						<input type="date" name="edate">
-					</p>
-					
-				</div>
-				
-			
-			<input type="submit" name="add" value="Add Purchase">
-			</form>
-		<br>
-	
-	</div>
-		
 </body>
 
 <script>

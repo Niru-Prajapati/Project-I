@@ -68,12 +68,6 @@ Pharmacy
 				</center> 
 			</div>
 		</form>
-	</div>
-	<div class=footer>
-	<br>
-	Powered by VE Technologies. 
-	<br><br>
-	</div>
 
 </body>
 

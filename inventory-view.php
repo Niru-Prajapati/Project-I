@@ -79,14 +79,13 @@
 			<th>Quantity Available</th>
 			<th>Category</th>
 			<th>Price</th>
-			<th>Location in Store</th>
 			<th>Action</th>
 		</tr>
 	
 	<?php
 	include "config.php";
 	
-		$sql = "SELECT med_id, med_name,med_qty,category,med_price,location_rack FROM meds";
+		$sql = "SELECT med_id, med_name,med_qty,category,med_price FROM meds";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 		
@@ -98,7 +97,7 @@
 			echo "<td>" . $row["med_qty"]. "</td>";
 			echo "<td>" . $row["category"]. "</td>";
 			echo "<td>" . $row["med_price"] . "</td>";
-			echo "<td>" . $row["location_rack"]. "</td>";
+		
 			echo "<td align=center>";
 						 
 				echo "<a class='button1 edit-btn' href=inventory-update.php?id=".$row['med_id'].">Edit</a>";

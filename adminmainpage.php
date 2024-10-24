@@ -20,13 +20,13 @@
 				<a href="inventory-add.php">Add New Medicine</a>
 				<a href="inventory-view.php">Manage Inventory</a>
 			</div>
-			<!-- <button class="dropdown-btn">Suppliers
+			 <button class="dropdown-btn">Suppliers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="supplier-add.php">Add New Supplier</a>
 				<a href="supplier-view.php">Manage Suppliers</a>
-			</div> -->
+			</div> 
 			<button class="dropdown-btn">Stock Purchase
 			<i class="down"></i>
 			</button>
@@ -45,8 +45,8 @@
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
-				<a href="billing-add.php">Add New Customer</a>
-				<a href="billing-view.php">Manage Customer</a>
+				<a href="customer-add.php">Add New Customer</a>
+				<a href="customer-view.php">Manage Customer</a>
 			</div>
 			<a href="sales-view.php">View Sales Invoice Details</a>
 			<a href="salesitems-view.php">View Sold Products Details</a>

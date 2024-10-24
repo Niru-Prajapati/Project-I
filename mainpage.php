@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="login1.css">
 <head>
 <div class="header">
-  <h1>PHARMACIA</h1>
+  <h1>PHARMACY</h1>
  <p style="margin-top:-20px;line-height:1;font-size:30px;">Pharmacy Inventory and Billing System</p>
 </div>
 <title>
@@ -66,12 +66,6 @@ Pharmacy
 				</center>
 			</div>
 		</form>
-	</div>
-
-	<div class=footer>
-	<br>
-	Powered by VE Technologies. 
-	<br><br>
 	</div>
 	
 </body>
