@@ -9,7 +9,7 @@
 		$search_result=mysqli_query($conn,"CALL `SEARCH_INVENTORY`(@p0);") or die(mysqli_error($conn));
 	}
 	else {
-			$query="SELECT med_id as medid, med_name as medname,med_qty as medqty,category as medcategory,med_price as medprice,location_rack as medlocation FROM meds";
+			$query="SELECT med_id as medid, med_name as medname,med_qty as medqty,category as medcategory,med_price as medprice  FROM meds";
 			$search_result=filtertable($query);
 	}
 	
@@ -36,7 +36,7 @@ Inventory
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			<a href="pharm-inventory.php">View Inventory</a>
 			<a href="pharm-pos1.php">Add New Sale</a>
@@ -58,12 +58,12 @@ Inventory
 	$result1=$conn->query($sql1);
 	$row1=$result1->fetch_row();
 	
-	$ename=$row1[0];
+	// $ename=$row1[0];
 		
 	?>
 
 	<div class="topnav">
-		<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+		<a href="logout1.php">Logout</a>
 	</div>
 
 	
@@ -89,7 +89,7 @@ Inventory
 			<th>Quantity Available</th>
 			<th>Category</th>
 			<th>Price</th>
-			<th>Location in Store</th>
+			
 		</tr>
 		
 	<?php
@@ -104,7 +104,7 @@ Inventory
 			echo "<td>" . $row["medqty"]. "</td>";
 			echo "<td>" . $row["medcategory"]. "</td>";
 			echo "<td>" . $row["medprice"] . "</td>";
-			echo "<td>" . $row["medlocation"]. "</td>";
+			
 		echo "</tr>";
 		}
 		echo "</table>";

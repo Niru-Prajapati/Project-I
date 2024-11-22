@@ -76,7 +76,6 @@ Reports
 	<table align="right" id="table1" style="margin-right:100px;">
 		<tr>
 			<th>Purchase ID</th>
-			<th>Supplier ID</th>
 			<th>Medicine ID</th>
 			<th>Quantity</th>
 			<th>Cost of Purchase</th>
@@ -95,7 +94,6 @@ Reports
 			
 		echo "<tr>";
 			echo "<td>" . $row["p_id"]. "</td>";
-			echo "<td>" . $row["sup_id"]. "</td>";
 			echo "<td>" . $row["med_id"]. "</td>";
 			echo "<td>" . $row["p_qty"]. "</td>";
 			echo "<td>" . $row["p_cost"]. "</td>";

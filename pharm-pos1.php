@@ -14,7 +14,7 @@ New Sales
 <body>
 
 		<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			
 			<a href="pharm-inventory.php">View Inventory</a>
@@ -147,8 +147,6 @@ New Sales
 					<label for="mcat">Category:</label>
 					<input type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
 					
-					<label for="mloc">Location:</label>
-					<input type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
 					
 					</div>
 					<div class="column">

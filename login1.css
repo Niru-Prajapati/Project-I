@@ -1,6 +1,5 @@
 body{
 	font-family:Arial;
-	background-image:url("pharm1.png");
 	background-size:cover;
 	overflow:hidden;
 }
@@ -9,23 +8,13 @@ body{
   padding: 10px;
   margin:-10px;
   text-align: center;
-  background: #003366;
+  background: #0077b3;
   color: white;
   font-size: 30px;
   overflow:hidden;
 }
 
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   right:0;
-   background-color: #003366;
-   color: white;
-   text-align: center;
-   overflow:hidden;
-}
+
 
 .container{
     width:30%;
@@ -48,7 +37,7 @@ body{
     margin-top: 0px;
     font-weight: normal;
     padding: 10px;
-    background-color: #003366;
+    background-color:#0077b3;
     color: white;
     font-family: sans-serif;
 }

@@ -14,7 +14,7 @@ Suppliers
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>

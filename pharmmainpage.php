@@ -15,7 +15,7 @@ body {font-family:Arial;}
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			
 			<a href="pharm-inventory.php">View Inventory</a>
@@ -38,12 +38,12 @@ body {font-family:Arial;}
 	$result=$conn->query($sql);
 	$row=$result->fetch_row();
 	
-	$ename=$row[0];
+	
 		
 	?>
 
 	<div class="topnav">
-		<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+		<a href="logout1.php">Logout</a>
 	</div>
 	
 	<center>
@@ -53,11 +53,11 @@ body {font-family:Arial;}
 	</center>
 	
 	<a href="pharm-pos1.php" title="Add New Sale">
-	<img src="carticon1.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
+	<img src="https://cdn.icon-icons.com/icons2/2869/PNG/512/add_to_cart_icon_181858.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
 	</a>
 	
 	<a href="pharm-inventory.php" title="View Inventory">
-	<img src="inventory.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Inventory">
+	<img src="https://cdn-icons-png.flaticon.com/512/10469/10469240.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Inventory">
 	</a>
 	
 </body>

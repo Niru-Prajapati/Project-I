@@ -59,7 +59,7 @@ Employee
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>			
+			
 			</div>		
 	</div>
 
@@ -88,7 +88,6 @@ Employee
 		$id = mysqli_real_escape_string($conn, $_REQUEST['eid']);
 		$fname = mysqli_real_escape_string($conn, $_REQUEST['efname']);
 		$lname = mysqli_real_escape_string($conn, $_REQUEST['elname']);
-		//$bdate = mysqli_real_escape_string($conn, $_REQUEST['ebdate']);
 		$age = mysqli_real_escape_string($conn, $_REQUEST['eage']);
 		$sex = mysqli_real_escape_string($conn, $_REQUEST['esex']);
 		$etype = mysqli_real_escape_string($conn, $_REQUEST['etype']);
@@ -145,7 +144,7 @@ Employee
 						<select id="etype" name="etype">
 							<option value="selected">Select</option>
 								<option>Pharmacist</option>
-								<option>Manager</option>
+								
 						</select>
 					</p>
 					<p>
