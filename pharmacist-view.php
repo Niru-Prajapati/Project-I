@@ -84,7 +84,7 @@ Employee
 			<th>Date of Joining</th>
 			<th>Salary</th>
 			<th>Phone Number</th>
-			<th>Email </th>
+			<th>Email Address</th>
 			<th>Address</th>
 			<th>Action</th>
 		</tr>

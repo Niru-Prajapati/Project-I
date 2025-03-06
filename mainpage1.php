@@ -51,7 +51,7 @@ Pharmacy
 				}
 				else {
 				
-					$emp=$row[0];
+					$emp=$row['e_id'];
 					session_start();
 					$_SESSION['user']=$emp;
 					header("location:pharmmainpage.php");

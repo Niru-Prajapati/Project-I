@@ -39,7 +39,7 @@ body {font-family:Arial;}
 	?>
 
 	<div class="topnav">
-		<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+		<a href="logout1.php">Logout</a>
 	</div>
 	
 	<center>

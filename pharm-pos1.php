@@ -40,7 +40,7 @@ New Sales
 	?>
 
 	<div class="topnav">
-		<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+		<a href="logout1.php">Logout</a>
 	</div>
 	
 	<center>
@@ -139,13 +139,13 @@ New Sales
 					<input type="number" name="medid" value="<?php echo $row4[0]; ?>"readonly ><br><br>
 					
 					<label for="mdname">Medicine Name:</label>
-					<input type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
+					<input type="text" name="mdname" value="<?php if (isset($row4)) echo $row4[1]; ?>" readonly><br><br>
 					
 					</div>
 					<div class="column">
 					
 					<label for="mcat">Category:</label>
-					<input type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
+					<input type="text" name="mcat" value="<?php if (isset($row4)) echo $row4[1]; ?>" readonly><br><br>
 					
 					
 					</div>
@@ -181,7 +181,7 @@ New Sales
 				{echo "QUANTITY INVALID!";}
 				else {
 				$price=$_POST['mprice']*$qty;
-				$qry6="INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
+				$qry6="INSERT INTO sales_item(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
 				$result6 = mysqli_query($conn,$qry6);
 				echo mysqli_error($conn);
 				

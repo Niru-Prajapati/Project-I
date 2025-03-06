@@ -60,7 +60,7 @@ New Sales
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>
+				
 			</div>
 	</div>
 
@@ -102,30 +102,41 @@ New Sales
 	
 		
 	<?php
-	
-		session_start();
-		
-		$qry1="SELECT id from admin where a_username='$_SESSION[user]'";
-		$result1=$conn->query($qry1);
-		$row1=$result1->fetch_row();
-		$eid=$row1[0];
-		
-			if(isset($_GET['sid'])) 
-			{
-				$sid=$_GET['sid'];
-			}
-			
-			if(isset($_POST['cid']))
-				$cid=$_POST['cid'];
-			
-		if(isset($_POST['custadd'])) {
-			
-				$qry2="INSERT INTO sales(c_id,e_id) VALUES ('$cid','$eid')"; 
-				if(!($result2=$conn->query($qry2))) {
-					echo "<p style='font-size:8; color:red;'>Invalid! Enter valid Customer ID to record Sales.</p>";
-				}
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+include "config.php";
+if (isset($_SESSION['user'])) {
+    $username = $_SESSION['user'];
+    
+    $qry1 = "SELECT id FROM admin WHERE a_username='" . $_SESSION['user'] . "'";
+    $result1 = $conn->query($qry1);
+    if ($result1 && $result1->num_rows > 0) {
+		$row1 = $result1->fetch_row();
+		$eid = $row1[0];
+
+		if (isset($_GET['sid'])) {
+			$sid = $_GET['sid'];
 		}
-	?>
+
+		if (isset($_POST['cid'])) {
+			$cid = $_POST['cid'];
+		}
+
+		if (isset($_POST['custadd'])) {
+			$qry2 = "INSERT INTO sales(c_id, e_id) VALUES ('$cid', '$eid')";
+			if (!($result2 = $conn->query($qry2))) {
+				echo "<p style='font-size:8; color:red;'>Invalid! Enter valid Customer ID to record Sales.</p>";
+			}
+		}
+	} else {
+		echo "<p style='font-size:8; color:red;'>Error: Admin user not found.</p>";
+	}
+} else {
+	echo "<p style='font-size:8; color:red;'>Error: Session user not set. Please log in.</p>";
+}
+?>
+
 			
 		<form method="post">
 			<select id="med" name="med">
@@ -173,17 +184,20 @@ New Sales
 					<input type="number" name="medid" value="<?php echo $row4[0]; ?>"readonly ><br><br>
 					
 					<label for="mdname">Medicine Name:</label>
-					<input type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
+					<input type="text" name="mdname" value="
+					<?php if (isset($row4)) echo $row4[1]; ?>" readonly><br><br>
 					
 					</div>
 					<div class="column">
 					
-					<label for="mcat">Category:</label>
-					<input type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
+					<label for="mcat">Category: </label>
+					<input type="text" name="mcat" value="<?php if (isset($row4)) echo $row4[3]; ?>" readonly /> <br> <br>
 					
 					
 					
 					</div>
+
+
 					<div class="column">
 					
 					<label for="mqty">Quantity Available:</label>
@@ -216,7 +230,7 @@ New Sales
 					{echo "QUANTITY INVALID!";}
 					else {
 					$price=$_POST['mprice']*$qty;
-					$qry6="INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
+					$qry6="INSERT INTO sales_item(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
 					$result6 = mysqli_query($conn,$qry6);
 					echo mysqli_error($conn);
 					

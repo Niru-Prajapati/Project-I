@@ -13,7 +13,7 @@ Reports
 <body>
 
 		<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -59,7 +59,7 @@ Reports
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>				
+								
 			</div>			
 	</div>
 
@@ -87,7 +87,7 @@ Reports
 	<?php
 	
 		include "config.php";
-		$result=mysqli_query($conn,"CALL `EXPIRY`();");
+		$result=mysqli_query($conn,"CALL `EXPIRES`();");
 		if ($result->num_rows > 0) { 
 
 		while($row = $result->fetch_assoc()) {

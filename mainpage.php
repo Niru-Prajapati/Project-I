@@ -32,7 +32,7 @@ Pharmacy
 				<input type="submit" value="Click here for Pharmacist Login" name="psubmit" id="submit" />
 				
 	<?php
-				
+		session_start();		
 		include "config.php";
 
 		if(isset($_POST['submit'])){
@@ -44,7 +44,8 @@ Pharmacy
 		
 					$sql="SELECT * FROM admin WHERE a_username='$uname' AND a_password='$password'";
 					$result = $conn->query($sql);
-					$row = $result->fetch_row();
+					if ($result) {
+						$row = $result->fetch_row();
 					if(!$row) {
 						echo "<p style='color:red;'>Invalid username or password!</p>";
 					}
@@ -52,6 +53,7 @@ Pharmacy
 						session_start();
 						$_SESSION['user']=$uname;
 						header('location:adminmainpage.php');
+					}
 					}
 				}
 			}

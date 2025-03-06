@@ -59,7 +59,7 @@ Reports
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>				
+							
 			</div>		
 	</div>
 
@@ -86,6 +86,11 @@ Reports
 	
 	include "config.php";
 	$result=mysqli_query($conn,"CALL `STOCK`();");
+	$result = mysqli_query($conn, "CALL `STOCK`();");
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
 	if ($result->num_rows > 0) {
 	
 	while($row = $result->fetch_assoc()) {

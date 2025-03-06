@@ -53,7 +53,7 @@ body {font-family:Arial;}
 	</center>
 	
 	<a href="pharm-pos1.php" title="Add New Sale">
-	<img src="https://cdn.icon-icons.com/icons2/2869/PNG/512/add_to_cart_icon_181858.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
+	<img src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-1-1/32/Add-Cart-Product-Buy-Plus-512.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
 	</a>
 	
 	<a href="pharm-inventory.php" title="View Inventory">

@@ -13,7 +13,7 @@ New Sales
 
 <body>
 
-		<div class="sidenav">
+		<!-- <div class="sidenav">
 			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			
@@ -26,7 +26,7 @@ New Sales
 				<a href="pharm-customer.php">Add New Customer</a>
 				<a href="pharm-customer-view.php">View Customers</a>
 			</div>
-	</div>
+	</div> -->
 
 	<?php
 	
@@ -79,7 +79,7 @@ New Sales
 		}
 	
 		if(!empty($sid)) {
-		$qry1 = "SELECT med_id,sale_qty,tot_price FROM sales_items where sale_id=$sid";
+		$qry1 = "SELECT med_id,sale_qty,tot_price FROM sales_item where sale_id=$sid";
 		$result1 = $conn->query($qry1);
 		$sum=0;
 
@@ -122,7 +122,7 @@ New Sales
 		if(isset($_POST['custadd'])) {
 			
 			$res=mysqli_query($conn,"SET @p0=$sid;");
-			$res=mysqli_query($conn,"CALL `TOTAL_AMT`(@p0,@p1);") or die(mysqli_error($conn));
+			// $res=mysqli_query($conn,"CALL `TOTAL_AMT`(@p0,@p1);") or die(mysqli_error($conn));
 			$res=mysqli_query($conn,"SELECT @p1 as TOTAL;");
 			
 			while($row=mysqli_fetch_array($res))
