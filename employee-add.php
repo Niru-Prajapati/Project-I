@@ -36,12 +36,12 @@ Employee
 				<a href="purchase-add.php">Add New Purchase</a>
 				<a href="purchase-view.php">Manage Purchases</a>
 			</div>
-			<button class="dropdown-btn">Pharmacist
+			<button class="dropdown-btn">Employee
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
-				<a href="employee-add.php">Add New Pharmacist</a>
-				<a href="employee-view.php">Manage Pharmacist</a>
+				<a href="employee-add.php">Add New Employee</a>
+				<a href="employee-view.php">Manage Employee</a>
 			</div>		
 			<button class="dropdown-btn">Customers
 			<i class="down"></i>
@@ -50,9 +50,9 @@ Employee
 				<a href="customer-add.php">Add New Customer</a>
 				<a href="customer-view.php">Manage Customers</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>		
+				
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>

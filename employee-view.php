@@ -50,9 +50,9 @@ Employee
 				<a href="customer-add.php">Add New Customer</a>
 				<a href="customer-view.php">Manage Customers</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>			
+					
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>

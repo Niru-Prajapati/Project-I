@@ -1,13 +1,30 @@
 <?php
-	include "config.php";
-	
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-		$qry1="SELECT * FROM meds WHERE med_id='$id'";
-		$result = $conn->query($qry1);
-		$row = $result -> fetch_row();
-	}
+include "config.php";
+
+// Process update before any HTML output
+if (isset($_POST['update'])) {
+    $id = $_POST['medid'];
+    $name = $_POST['medname'];
+    $qty = $_POST['qty'];
+    $cat = $_POST['cat'];
+    $price = $_POST['sp'];
+
+    $sql = "UPDATE meds SET med_name='$name', med_qty='$qty', category='$cat', med_price='$price' WHERE med_id='$id'";
+    if ($conn->query($sql)) {
+        header("Location: inventory-view.php");
+        exit(); // Stop script execution after redirection
+    } else {
+        echo "<p style='font-size:8;color:red;'>Error! Unable to update.</p>";
+    }
+}
+
+// Fetch the medicine details before rendering the form
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $qry1 = "SELECT * FROM meds WHERE med_id='$id'";
+    $result = $conn->query($qry1);
+    $row = $result->fetch_row();
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +35,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="nav2.css">
 <link rel="stylesheet" type="text/css" href="form4.css">
-<title>
-Medicines
-</title>
+<title>Medicines</title>
 </head>
 
 <body>
@@ -63,16 +78,15 @@ Medicines
 			<a href="customer-add.php">Add New Customer</a>
 			<a href="customer-view.php">Manage Customers</a>
 		</div>
-		<a href="sales-view.php">View Sales Invoice Details</a>
+		<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 		<a href="salesitems-view.php">View Sold Products Details</a>
-		<a href="pos1.php">Add New Sale</a>
+		<!-- <a href="pos1.php">Add New Sale</a> -->
 		<button class="dropdown-btn">Reports
 		<i class="down"></i>
 		</button>
 		<div class="dropdown-container">
 			<a href="stockreport.php">Medicines - Low Stock</a>
 			<a href="expiryreport.php">Medicines - Soon to Expire</a>
-			<a href="salesreport.php">Transactions Reports</a>
 		</div>	
 	</div>
 
@@ -88,58 +102,35 @@ Medicines
 
 	<div class="one">
 		<div class="row">
-			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+			<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 				<div class="column">
 				<p>
 					<label for="medid">Medicine ID:</label><br>
-					<input type="number" name="medid" value="<?php echo $row[0]; ?>" readonly>
+					<input type="number" name="medid" value="<?= $row[0] ?? ''; ?>" readonly>
 				</p>
 				<p>
 					<label for="medname">Medicine Name:</label><br>
-					<input type="text" name="medname" value="<?php echo $row[1]; ?>">
+					<input type="text" name="medname" value="<?= $row[1] ?? ''; ?>">
 				</p>
 				<p>
 					<label for="qty">Quantity:</label><br>
-					<input type="number" name="qty" value="<?php echo $row[2]; ?>">
+					<input type="number" name="qty" value="<?= $row[2] ?? ''; ?>">
 				</p>
 				<p>
 					<label for="cat">Category:</label><br>
-					<input type="text" name="cat" value="<?php echo $row[3]; ?>">
+					<input type="text" name="cat" value="<?= $row[3] ?? ''; ?>">
 				</p>
 				</div>
 				
 				<div class="column">
 				<p>
 					<label for="sp">Price: </label><br>
-					<input type="number" step="0.01" name="sp" value="<?php echo $row[4]; ?>">
-				</p>
-				<p>
-					<label for="loc">Location:</label><br>
-					<input type="text" name="loc" value="<?php echo $row[5]; ?>">
+					<input type="number" step="0.01" name="sp" value="<?= $row[4] ?? ''; ?>">
 				</p>
 				</div>
 		
 				<input type="submit" name="update" value="Update">
-				</form>
-				
-	<?php
-
-		if( isset($_POST['medname'])||isset($_POST['qty'])||isset($_POST['cat'])||isset($_POST['sp'])||isset($_POST['loc'])) {
-			 $id=$_POST['medid'];
-			 $name=$_POST['medname'];
-			 $qty=$_POST['qty'];
-			 $cat=$_POST['cat'];
-			 $price=$_POST['sp'];
-			 $lcn=$_POST['loc'];
-			 
-		$sql="UPDATE meds SET med_name='$name',med_qty='$qty',category='$cat',med_price='$price',location_rack='$lcn' where med_id='$id'";
-		if ($conn->query($sql))
-		header("location:inventory-view.php");
-		else
-		echo "<p style='font-size:8;color:red;'>Error! Unable to update.</p>";
-		}
-
-	?>
+			</form>
 		</div>
 	</div>
 	

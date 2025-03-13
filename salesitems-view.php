@@ -50,9 +50,9 @@ Products - Sale
 				<a href="customer-add.php">Add New Customer</a>
 				<a href="customer-view.php">Manage Customers</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>			
+			<!-- <a href="pos1.php">Add New Sale</a>			 -->
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
@@ -75,6 +75,7 @@ Products - Sale
 	<table align="right" id="table1" style="margin-right:100px;">
 		<tr>
 			<th>Sale ID</th>
+			<th>Customer ID</th>
 			<th>Medicine ID</th>
 			<th>Medicine Name</th>
 			<th>Quantity Sold</th>
@@ -85,7 +86,9 @@ Products - Sale
 	<?php
 	
 	include "config.php";
-	$sql = "SELECT sale_id, med_id,sale_qty,tot_price FROM sales_item";
+$sql = "SELECT s.c_id, si.sale_id, si.med_id, si.sale_qty, si.tot_price 
+        FROM sales_item si
+        JOIN customer s ON si.c_id = s.c_id";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	
@@ -99,6 +102,7 @@ Products - Sale
 		
 			echo "<tr>";
 				echo "<td>" . $row["sale_id"]. "</td>";
+				echo "<td>" . $row["c_id"]. "</td>"; // Customer ID added
 				echo "<td>" . $row["med_id"] . "</td>";
 				 echo "<td>" . $row1["med_name"]. "</td>";
 				echo "<td>" . $row["sale_qty"]. "</td>";

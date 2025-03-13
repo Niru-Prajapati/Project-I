@@ -52,7 +52,7 @@ Sales Invoice
 			</div>
 			<a href="sales-view.php">View Sales Invoice Details</a>
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>
+			
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>

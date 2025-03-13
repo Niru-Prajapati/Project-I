@@ -113,7 +113,7 @@ New Sales
 		<form method=post>
 		<a name='pos1' class='button1 view-btn' href=pharm-pos1.php?sid=".$sid.">Go Back to Sales Page</a> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type='submit' name='custadd' value='Complete Order'><br>
+		<!-- <input type='submit' name='custadd' value='Complete Order'><br> -->
 		</form>
 		</div>
 		

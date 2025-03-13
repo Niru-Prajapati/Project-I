@@ -65,7 +65,7 @@ Purchases
 				echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
 		 }
 	?>
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACY </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -102,16 +102,16 @@ Purchases
 				<a href="purchase-add.php">Add New Customer</a>
 				<a href="purchase-view.php">Manage Customers</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>
+			<!-- <a href="pos1.php">Add New Sale</a> -->
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>
+			
 			</div>
 	</div>
 
@@ -132,15 +132,15 @@ Purchases
 				<div class="column">
 					<p>
 						<label for="pid">Purchase ID:</label><br>
-						<input type="number" name="pid" value="<?php echo $row[0]; ?>" readonly>
+						<input type="number" name="pid" value="<?php echo $row[0]; ?>">
 					</p>
 					<p>
 						<label for="sid">Supplier ID:</label><br>
-						<input type="number" name="sid" value="<?php echo $row[1]; ?>" readonly>
+						<input type="number" name="sid" value="<?php echo $row[1]; ?>" >
 					</p>
 					<p>
 						<label for="mid">Medicine ID:</label><br>
-						<input type="number" name="mid" value="<?php echo $row[2]; ?>" readonly>
+						<input type="number" name="mid" value="<?php echo $row[2]; ?>" >
 					</p>
 					<p>
 						<label for="pqty">Purchase Quantity:</label><br>

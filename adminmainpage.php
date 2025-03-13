@@ -53,9 +53,9 @@
 				<a href="customer-add.php">Add New Customer</a>
 				<a href="customer-view.php">Manage Customer</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>
+			
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
@@ -75,8 +75,8 @@
 	</div>
 	</center>
 	
-	<a href="pos1.php" title="Add New Sale">
-	<img src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-1-1/32/Add-Cart-Product-Buy-Plus-512.png" style="padding:8px;margin-left:450px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
+	<a href="supplier-view.php" title="View Suppliers">
+	<img src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-1-1/32/Add-Cart-Product-Buy-Plus-512.png" style="padding:8px;margin-left:450px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Suppliers">
 	</a>
 	
 	<a href="inventory-view.php" title="View Inventory">
@@ -87,12 +87,12 @@
 	<img src="https://cdn-icons-png.flaticon.com/512/2621/2621849.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
 	</a>
 	<br>
-	<a href="salesreport.php" title="View Transactions">
-	<img src="https://cdn-icons-png.flaticon.com/256/11000/11000628.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Transactions List">
+	<a href="salesitems-view.php" title="View Sold Products">
+	<img src="https://cdn-icons-png.flaticon.com/256/11000/11000628.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Sold Products">
 	</a>
 	
-	<a href="stockreport.php" title="Low Stock Alert">
-	<img src="https://thumbs.dreamstime.com/b/raster-medical-help-warning-triangle-sign-icon-flat-uses-black-yellow-colors-symbol-style-attention-white-background-182313707.jpg" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Low Stock Report">
+	<a href="expiryreport.php" title="Soon to Expire">
+	<img src="https://thumbs.dreamstime.com/b/raster-medical-help-warning-triangle-sign-icon-flat-uses-black-yellow-colors-symbol-style-attention-white-background-182313707.jpg" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Soon to Expire">
 	</a>
 	
 	

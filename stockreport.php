@@ -50,9 +50,9 @@ Reports
 				<a href="customer-add.php">Add New Customer</a>
 				<a href="customer-view.php">Manage Customers</a>
 			</div>
-			<a href="sales-view.php">View Sales Invoice Details</a>
+			<!-- <a href="sales-view.php">View Sales Invoice Details</a> -->
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>			
+			<!-- <a href="pos1.php">Add New Sale</a>			 -->
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
@@ -85,12 +85,15 @@ Reports
 	<?php
 	
 	include "config.php";
-	$result=mysqli_query($conn,"CALL `STOCK`();");
-	$result = mysqli_query($conn, "CALL `STOCK`();");
+// 	$result=mysqli_query($conn,"CALL `STOCK`();");
+	
 
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
-}
+// if (!$result) {
+//     die("Query failed: " . mysqli_error($conn));
+// }
+if ($conn->multi_query("CALL STOCK()")) {
+    do {
+        if ($result = $conn->store_result()) {
 	if ($result->num_rows > 0) {
 	
 	while($row = $result->fetch_assoc()) {
@@ -105,6 +108,12 @@ if (!$result) {
 	}
 	echo "</table>";
 	} 
+	$result->free();
+}
+} while ($conn->more_results() && $conn->next_result());
+} else {
+die("Query failed: " . $conn->error);
+}
 
 	$conn->close();
 	?>

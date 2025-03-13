@@ -53,8 +53,8 @@ New Sales
 	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		<center>
 		
-		<select id="cid" name="cid">
-			<option value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option>
+		 <select id="c_id" name="c_id">
+			<option value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option> 
 					
 					
 	<?php	
@@ -64,14 +64,15 @@ New Sales
 		echo mysqli_error($conn);
 		if ($result1->num_rows > 0) {
 			while($row1 = $result1->fetch_assoc()) {
-				
-				echo "<option>".$row1["c_id"]."</option>";
+				echo "<option value='" . $row1["c_id"] . "'" . ($row1["c_id"] == $cid ? " selected" : "") . ">" . $row1["c_id"] . "</option>";
+
+				// echo "<option>".$row1["c_id"]."</option>";
 				}}
     ?>
 		
     </select>
 	&nbsp;&nbsp;
-	<input type="submit" name="custadd" value="Add to Proceed.">
+	<!-- <input type="submit" name="custadd" value="Add to Proceed."> -->
 	</form>
 	
     <?php
@@ -131,6 +132,7 @@ New Sales
 					
 		}
 	?>
+	
 			<div class="one row" style="margin-right:160px;">
 			<form method="post">
 					<div class="column">
@@ -145,9 +147,12 @@ New Sales
 					<div class="column">
 					
 					<label for="mcat">Category:</label>
-					<input type="text" name="mcat" value="<?php if (isset($row4)) echo $row4[1]; ?>" readonly><br><br>
+					<input type="text" name="mcat" value= "<?php if (isset($row4)) echo $row4[3]; ?>"readonly><br><br>
 					
-					
+					<label for="c_id">Customer ID:</label>
+					<!-- <input type="number" name="c_id" value= "<?php if (isset($row6)) echo $row6; ?>"readonly><br><br> -->
+					<input type="number" name="c_id" value="<?php echo isset($cid) ? $cid : ''; ?>"><br><br>
+
 					</div>
 					<div class="column">
 					
@@ -176,17 +181,24 @@ New Sales
 				$mid=$_POST['medid'];
 				$aqty=$_POST['mqty'];
 				$qty=$_POST['mcqty'];
+				$cid=$_POST['c_id'];
 				
 				if($qty>$aqty||$qty==0)
 				{echo "QUANTITY INVALID!";}
 				else {
 				$price=$_POST['mprice']*$qty;
-				$qry6="INSERT INTO sales_item(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
+				$qry6="INSERT INTO sales_item(`med_id`,`sale_qty`,`tot_price`,`c_id`) VALUES($mid,$qty,$price,$cid)";
 				$result6 = mysqli_query($conn,$qry6);
+				if ($result6) {
+					// Reduce inventory after a successful sale
+					$qry_update = "UPDATE meds SET med_qty = med_qty - $qty WHERE med_id = $mid";
+					mysqli_query($conn, $qry_update);
+				}
 				echo mysqli_error($conn);
 				
 				echo "<br><br> <center>";
-				echo "<a class='button1 view-btn' href=pharm-pos2.php?sid=".$sid.">View Order</a>";
+				echo "medicine added successfully!";
+				//echo "<a class='button1 view-btn' href=pharm-pos2.php?sid=".$sid.">View Order</a>";
 				echo "</center>";
 				}
 		}	
